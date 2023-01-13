@@ -19,10 +19,12 @@ export const CurrentVideo: React.FC<Props> = ({video}) => {
     <div>
       <h2>{video.title}</h2>
       <YoutubeEmbed embedId={video.videoId} />
-      <CopyUrl url={url} />
-      <button style={{ background: '#F5A623' }} onClick={handleClick}>
-        Go
-      </button>
+      <div className="separateElements">
+        <CopyUrl url={url} />
+        <button className="goButton" onClick={handleClick}>
+          Go
+        </button>
+      </div>
     </div>
   );
   }
