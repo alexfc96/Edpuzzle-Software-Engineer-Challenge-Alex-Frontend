@@ -3,6 +3,7 @@ import { Video } from "../../App";
 import "./currentVideo.css";
 
 import YoutubeEmbed from "../../components/youtubeEmbed/youtubeEmbed";
+import CopyUrl from "../../components/copyUrl/copyUrl"
 
 interface Props {
   video: Video;
@@ -10,9 +11,13 @@ interface Props {
 
 export const CurrentVideo: React.FC<Props> = ({video}) => {
     return (
-      <div className="">
+      <div>
         <h2>{video.title}</h2>
         <YoutubeEmbed embedId={video.videoId} />
+        <CopyUrl videoId={video._id} />
+        {/* 
+    background: #F5A623;
+         */}
       </div>
     );
   }
