@@ -47,7 +47,7 @@ const App: React.FC = () => {
   return (
     <div>
       <nav>
-          EDPUZZLE
+        <img src="horizontal-logo.svg" alt="EDPuzzle logo" style={{height: "35px"}} />
       </nav>
       {videos && videos.map((video: Video) =>
         <VideoBox key={video._id} video={video} selectCurrentVideo={selectCurrentVideo} />)

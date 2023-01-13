@@ -7,7 +7,7 @@ interface Props {
 const YoutubeEmbed: React.FC<Props> = ({ embedId }) => (
   <div className="video-responsive">
     <iframe
-      width="853"
+      width="643"
       height="480"
       src={`https://www.youtube.com/embed/${embedId}`}
       frameBorder="0"
