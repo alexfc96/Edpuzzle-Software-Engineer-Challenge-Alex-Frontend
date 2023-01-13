@@ -2,25 +2,10 @@ import React, {FC} from "react";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
-import VideoBox from "../videoBox/videoBox";
-import CurrentVideo from "../currentVideo/currentVideo";
+import VideoBox from "./videoBox/videoBox";
+import CurrentVideo from "./currentVideo/currentVideo";
+import { Video } from "../../types";
 
-export interface Video {
-  _id: string;
-  author: string;
-  // "questions": [
-  //     {
-  //         "questionId": "63be6d861e7a6a473b600b7b",
-  //         "time": 11
-  //     },
-  //     {
-  //         "questionId": "63be6d861e7a6a473b600b7c",
-  //         "time": 131
-  //     }
-  // ],
-  title: string;
-  videoId: string;
-}
 
 const Home: FC = () => {
   const [videos, setVideos] = useState<Array<Video> | undefined>(undefined);

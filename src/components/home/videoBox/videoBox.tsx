@@ -1,5 +1,5 @@
 import React from "react";
-import { Video } from "../../App";
+import { Video } from "../../../types";
 import "./videoBox.css"
 
 interface Props {

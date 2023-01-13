@@ -1,9 +1,9 @@
 import React from "react";
-import { Video } from "../../App";
 import "./currentVideo.css";
+import { Video } from "../../../types";
 
-import YoutubeEmbed from "../../components/youtubeEmbed/youtubeEmbed";
-import CopyUrl from "../../components/copyUrl/copyUrl"
+import YoutubeEmbed from "../../youtubeEmbed/youtubeEmbed";
+import CopyUrl from "../copyUrl/copyUrl"
 
 interface Props {
   video: Video;
