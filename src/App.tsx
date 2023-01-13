@@ -49,7 +49,7 @@ const App: React.FC = () => {
       <nav>
         <img src="horizontal-logo.svg" alt="EDPuzzle logo" style={{height: "35px"}} />
       </nav>
-      <div style={{display: "flex"}}>
+      <div style={{display: "flex", marginTop: "2%", marginLeft: "5%"}}>
         <div>
           {videos && videos.map((video: Video) =>
             <VideoBox key={video._id} video={video} selectCurrentVideo={selectCurrentVideo} />)
