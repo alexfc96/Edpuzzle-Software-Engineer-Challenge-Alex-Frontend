@@ -4,7 +4,7 @@ import axios from 'axios';
 import VideoBox from "./components/videoBox/videoBox"
 import { useState, useEffect } from "react";
 // import { Routes, Route, Link } from "react-router-dom";
-interface Video {
+export interface Video {
   _id: string;
   author: string;
   // "questions": [
@@ -22,8 +22,9 @@ interface Video {
 }
 
 const App: React.FC = () => {
-  // const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
   const [videos, setVideos] = useState<Array<Video> | undefined>(undefined);
+  const [currentVideo, setCurrentVideo] = useState<Video | undefined>(undefined);
+  console.log("🚀 ~ file: App.tsx:27 ~ currentVideo", currentVideo)
 
   const getVideos = async () => {
       try {
@@ -32,6 +33,10 @@ const App: React.FC = () => {
       } catch (error) {
           console.error(error);
       }
+  }
+
+  const selectCurrentVideo = (video: Video) => {
+    setCurrentVideo(video);
   }
 
   useEffect(() => {
@@ -44,7 +49,7 @@ const App: React.FC = () => {
           EDPUZZLE
       </nav>
       {videos && videos.map((video: Video) =>
-        <VideoBox key={video._id} title={video.title} imageUrl="videoPreview.jpg" />
+        <VideoBox key={video._id} video={video} selectCurrentVideo={selectCurrentVideo} />
       )
       }
     </div>

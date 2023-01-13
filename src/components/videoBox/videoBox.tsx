@@ -1,17 +1,23 @@
 import React from "react";
+import { Video } from "../../App";
 import "./videoBox.css"
 
 interface Props {
-  title: string;
-  imageUrl: string;
+  video: Video;
+  selectCurrentVideo: (video: Video) => void;
 }
 
-export const VideoBox: React.FC<Props> = ({title, imageUrl}) => {
+export const VideoBox: React.FC<Props> = ({video, selectCurrentVideo}) => {
+
+  const selectVideo = () => {
+    selectCurrentVideo(video)
+  };
+
     return (
-      <div className="video-preview">
-        <img src={imageUrl} alt={title}/>
+      <div className="video-preview" onClick={selectVideo}>
+        <img src="videoPreview.jpg" alt={video.title}/>
         <div className="video-info">
-          <h3>{title}</h3>
+          <h3>{video.title}</h3>
         </div>
       </div>
     );
