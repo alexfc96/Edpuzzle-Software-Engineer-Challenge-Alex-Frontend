@@ -1,8 +1,9 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
-import VideoBox from "./components/videoBox/videoBox"
-import { useState, useEffect } from "react";
+import VideoBox from "./components/videoBox/videoBox";
+import CurrentVideo from "./components/currentVideo/currentVideo";
 // import { Routes, Route, Link } from "react-router-dom";
 export interface Video {
   _id: string;
@@ -49,8 +50,10 @@ const App: React.FC = () => {
           EDPUZZLE
       </nav>
       {videos && videos.map((video: Video) =>
-        <VideoBox key={video._id} video={video} selectCurrentVideo={selectCurrentVideo} />
-      )
+        <VideoBox key={video._id} video={video} selectCurrentVideo={selectCurrentVideo} />)
+      }
+      {currentVideo && 
+        <CurrentVideo video={currentVideo} />
       }
     </div>
   );
