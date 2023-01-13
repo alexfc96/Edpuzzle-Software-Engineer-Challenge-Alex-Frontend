@@ -2,12 +2,10 @@ import React from "react";
 import './copyUrl.css';
 
 interface Props {
-  videoId: string;
+  url: string;
 }
 
-export const CopyUrl: React.FC<Props> = ({videoId}) => {
-    const url = `http://localhost:4200/video/${videoId}`;
-    
+export const CopyUrl: React.FC<Props> = ({url}) => {
     const copyUrl = () => {
         navigator.clipboard.writeText(url);
     };
