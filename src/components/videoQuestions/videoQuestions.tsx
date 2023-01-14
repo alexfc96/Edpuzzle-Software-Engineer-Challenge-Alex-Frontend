@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import moment from 'moment';
 import YouTube, { YouTubePlayer } from "react-youtube";
 
 import { Link, useParams } from 'react-router-dom';
@@ -106,13 +107,11 @@ const VideoQuestions: FC = () => {
                         {video.views &&
                             <div>
                                 <h2>Views:</h2>
-                                 <ul>
                                     {video.views.map((view: View) => {
                                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                                         // @ts-ignore
-                                        return <li key={view._id}>Viewed {view.timestamp} ago at 11.22</li>
+                                        return <p key={view._id}>Viewed {moment(view.timestamp).fromNow()} ago at {moment(view.timestamp).format('HH:mm')}</p>
                                     })}
-                                </ul>
                             </div>
                         }
                     </div>
