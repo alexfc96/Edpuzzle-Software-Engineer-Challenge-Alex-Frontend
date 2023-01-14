@@ -5,8 +5,8 @@ import moment from 'moment';
 import YouTube, { YouTubePlayer } from "react-youtube";
 
 import { Link, useParams } from 'react-router-dom';
-import { Question, Video, View } from "../../types";
-import QuestionComponent from "./questionComponent/questionComponent";
+import { Video, View } from "../../types";
+import { QuestionsComponent } from "./questionsComponent/questionsComponent";
 
 interface YouTubeStateChangeEvent {
     data: number;
@@ -92,14 +92,7 @@ const VideoQuestions: FC = () => {
                     </div>
                     <div className="questionsBlock">
                         {video.questions && 
-                            <>
-                                <h2>Questions in the video:</h2>
-                                {video.questions.map((question: Question) => (
-                                    <>
-                                        <QuestionComponent question={question} key={question.questionId} />
-                                    </>
-                                ))}
-                            </>
+                            <QuestionsComponent questions={video.questions} />
                         }
                         <h2>
                             Viewed {video.views.length } times

@@ -1,5 +1,5 @@
 import React from "react";
-import './questionComponent.css';
+import './question.css';
 import { Question } from "../../../types";
 
 interface Props {
