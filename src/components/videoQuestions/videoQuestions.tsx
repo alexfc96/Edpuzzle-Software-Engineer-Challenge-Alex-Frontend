@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 
 import { useParams } from 'react-router-dom';
-import { Video } from "../../types";
+import { Question, Video } from "../../types";
+import YoutubeEmbed from "../youtubeEmbed/youtubeEmbed";
+import QuestionComponent from "./questionComponent/questionComponent";
 
 const VideoQuestions: FC = () => {
     const { videoId } = useParams();
@@ -26,7 +28,25 @@ const VideoQuestions: FC = () => {
 
     return (
         <div>
-            <h1>{video?.title}</h1>
+            <nav>
+                <img src="/horizontal-logo.svg" alt="EDPuzzle logo" style={{height: "35px"}} />
+            </nav>
+            {video &&
+                <div>
+                    <div>
+                        <h1>{video?.title}</h1>
+                        {video && <YoutubeEmbed embedId={video.videoId} />}
+                    </div>
+                    {video.questions && 
+                        <div>
+                            <h2>Questions in the video:</h2>
+                            {video.questions.map((question: Question) =>
+                                <QuestionComponent question={question} key={question.questionId} />
+                            )}
+                        </div>
+                    }
+                </div>
+            }
         </div>
     )
 }
