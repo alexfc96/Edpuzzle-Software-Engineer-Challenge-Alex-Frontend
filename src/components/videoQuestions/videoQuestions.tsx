@@ -1,17 +1,56 @@
 import React, {FC} from "react";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import YouTube, { YouTubePlayer } from "react-youtube";
 
 import { useParams } from 'react-router-dom';
 import { Question, Video } from "../../types";
-import YoutubeEmbed from "../youtubeEmbed/youtubeEmbed";
 import QuestionComponent from "./questionComponent/questionComponent";
 
 const VideoQuestions: FC = () => {
     const { videoId } = useParams();
 
     const [video, setVideo] = useState<Video | undefined>(undefined);
+    const [timePassed, setTimePassed] = useState(0);
+    const [question, setQuestion ] = useState<string | undefined>(undefined)
+    
+    let videoElement: YouTubePlayer = null;
+    let intervalId: NodeJS.Timeout;
 
+    const handleAlertAccept = () => {
+        videoElement.target.playVideo();
+    };
+
+    const createAlert = (text: string) => {
+        alert("Question: " + text);
+        handleAlertAccept();
+    };
+
+    const handleOnStateChange = (event: any) => {
+        if (event.data === YouTube.PlayerState.PLAYING) {
+          videoElement = event;
+          intervalId = setInterval(() => {
+            if (event.target) {
+              if(video) {
+                video.questions.forEach(question => {
+                    if (event.target.getCurrentTime() >= question.time && event.target.getCurrentTime() <= question.time + 1) {
+                        // setTimePassed(event.target.getCurrentTime()); //TODO Save time?
+                        if (videoElement.target.playerInfo.playerState === 1) {
+                            videoElement.target.pauseVideo();
+                            setQuestion(question.text)
+                        }
+                    }
+                })
+              }
+            }
+          }, 1000);
+        }
+        if (event.data === YouTube.PlayerState.PAUSED) {
+            if(question) createAlert(question);
+        }
+
+      }
+      
     const getVideo = async () => {
         try {
             const response = await axios.get(`http://localhost:3000/api/videos/${videoId}`);
@@ -20,15 +59,10 @@ const VideoQuestions: FC = () => {
             console.error(error);
         }
     }
-  
-    const createAlert = (time: number, text: string) => {
-        setTimeout(() => {
-          alert(text);
-        }, time * 1000);
-      }
 
     useEffect(() => {
-      getVideo()
+      getVideo();
+      return () => clearInterval(intervalId);
     }, []);
 
     return (
@@ -40,7 +74,11 @@ const VideoQuestions: FC = () => {
                 <div className="divideBlocks">
                     <div>
                         <h2 style={{marginRight: "0 3%"}}>{video?.title}</h2>
-                        {video && <YoutubeEmbed embedId={video.videoId} />}
+                        {video && <YouTube
+                            videoId={video.videoId}
+                            onStateChange={handleOnStateChange}
+                        />
+                        }
                     </div>
                     <div className="questionsBlock">
                         {video.questions && 
@@ -49,7 +87,6 @@ const VideoQuestions: FC = () => {
                                 {video.questions.map((question: Question) => (
                                     <>
                                         <QuestionComponent question={question} key={question.questionId} />
-                                        {createAlert(question.time, question.text)}
                                     </>
                                 ))}
                             </>
