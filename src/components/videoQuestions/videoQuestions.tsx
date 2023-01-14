@@ -11,7 +11,6 @@ const VideoQuestions: FC = () => {
     const { videoId } = useParams();
 
     const [video, setVideo] = useState<Video | undefined>(undefined);
-    console.log("🚀 ~ file: videoQuestions.tsx:12 ~ video", video)
 
     const getVideo = async () => {
         try {
@@ -22,6 +21,12 @@ const VideoQuestions: FC = () => {
         }
     }
   
+    const createAlert = (time: number, text: string) => {
+        setTimeout(() => {
+          alert(text);
+        }, time * 1000);
+      }
+
     useEffect(() => {
       getVideo()
     }, []);
@@ -41,9 +46,12 @@ const VideoQuestions: FC = () => {
                         {video.questions && 
                             <>
                                 <h2>Questions in the video:</h2>
-                                {video.questions.map((question: Question) =>
-                                    <QuestionComponent question={question} key={question.questionId} />
-                                )}
+                                {video.questions.map((question: Question) => (
+                                    <>
+                                        <QuestionComponent question={question} key={question.questionId} />
+                                        {createAlert(question.time, question.text)}
+                                    </>
+                                ))}
                             </>
                         }
                         <h2>
