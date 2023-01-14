@@ -1,12 +1,12 @@
 import React, {FC} from "react";
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import moment from 'moment';
 import YouTube, { YouTubePlayer } from "react-youtube";
 
 import { Link, useParams } from 'react-router-dom';
 import { Video, View } from "../../types";
 import { QuestionsComponent } from "./questionsComponent/questionsComponent";
+import { ViewsComponent } from "./viewsComponent/viewsComponent";
 
 interface YouTubeStateChangeEvent {
     data: number;
@@ -18,7 +18,7 @@ const VideoQuestions: FC = () => {
 
     const [video, setVideo] = useState<Video | undefined>(undefined);
     const [question, setQuestion ] = useState<string | undefined>(undefined)
-    
+
     let videoElement: YouTubePlayer = null;
     let intervalId: NodeJS.Timeout;
 
@@ -58,7 +58,7 @@ const VideoQuestions: FC = () => {
         }
 
       }
-      
+
     const getVideo = async () => {
         try {
             const response = await axios.get(`http://localhost:3000/api/videos/${videoId}`);
@@ -91,22 +91,10 @@ const VideoQuestions: FC = () => {
                         }
                     </div>
                     <div className="questionsBlock">
-                        {video.questions && 
+                        {video.questions &&
                             <QuestionsComponent questions={video.questions} />
                         }
-                        <h2>
-                            Viewed {video.views.length } times
-                        </h2> 
-                        {video.views &&
-                            <div>
-                                <h2>Views:</h2>
-                                    {video.views.map((view: View) => {
-                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                        // @ts-ignore
-                                        return <p key={view._id}>Viewed {moment(view.timestamp).fromNow()} ago at {moment(view.timestamp).format('HH:mm')}</p>
-                                    })}
-                            </div>
-                        }
+                        <ViewsComponent views={video.views} />
                     </div>
                 </div>
             }
