@@ -11,19 +11,19 @@ const VideoQuestions: FC = () => {
     const { videoId } = useParams();
 
     const [video, setVideo] = useState<Video | undefined>(undefined);
-    const [timePassed, setTimePassed] = useState(0);
     const [question, setQuestion ] = useState<string | undefined>(undefined)
     
     let videoElement: YouTubePlayer = null;
     let intervalId: NodeJS.Timeout;
 
-    const handleAlertAccept = () => {
+    const handleAlertAccept = (videoElement: any) => {
         videoElement.target.playVideo();
     };
 
-    const createAlert = (text: string) => {
+    const createAlert = (text: string, videoElement: any) => {
+        setQuestion(undefined);
         alert("Question: " + text);
-        handleAlertAccept();
+        handleAlertAccept(videoElement);
     };
 
     const handleOnStateChange = (event: any) => {
@@ -34,7 +34,6 @@ const VideoQuestions: FC = () => {
               if(video) {
                 video.questions.forEach(question => {
                     if (event.target.getCurrentTime() >= question.time && event.target.getCurrentTime() <= question.time + 1) {
-                        // setTimePassed(event.target.getCurrentTime()); //TODO Save time?
                         if (videoElement.target.playerInfo.playerState === 1) {
                             videoElement.target.pauseVideo();
                             setQuestion(question.text)
@@ -46,7 +45,7 @@ const VideoQuestions: FC = () => {
           }, 1000);
         }
         if (event.data === YouTube.PlayerState.PAUSED) {
-            if(question) createAlert(question);
+            if(question) createAlert(question, event);
         }
 
       }
