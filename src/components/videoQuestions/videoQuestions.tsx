@@ -4,7 +4,7 @@ import axios from 'axios';
 import YouTube, { YouTubePlayer } from "react-youtube";
 
 import { Link, useParams } from 'react-router-dom';
-import { Question, Video } from "../../types";
+import { Question, Video, View } from "../../types";
 import QuestionComponent from "./questionComponent/questionComponent";
 
 interface YouTubeStateChangeEvent {
@@ -101,8 +101,20 @@ const VideoQuestions: FC = () => {
                             </>
                         }
                         <h2>
-                            Viewed {video.views.length} times
+                            Viewed {video.views.length } times
                         </h2> 
+                        {video.views &&
+                            <div>
+                                <h2>Views:</h2>
+                                 <ul>
+                                    {video.views.map((view: View) => {
+                                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                        // @ts-ignore
+                                        return <li key={view._id}>Viewed {view.timestamp} ago at 11.22</li>
+                                    })}
+                                </ul>
+                            </div>
+                        }
                     </div>
                 </div>
             }

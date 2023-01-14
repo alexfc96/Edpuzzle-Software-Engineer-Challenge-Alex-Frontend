@@ -15,5 +15,6 @@ export interface Question {
 }
 
 export interface View {
+    _id: string;
     timestamp: Date;
 }
