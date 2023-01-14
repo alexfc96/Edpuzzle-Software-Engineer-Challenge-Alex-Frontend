@@ -7,6 +7,11 @@ import { useParams } from 'react-router-dom';
 import { Question, Video } from "../../types";
 import QuestionComponent from "./questionComponent/questionComponent";
 
+interface YouTubeStateChangeEvent {
+    data: number;
+    target: YouTubePlayer;
+}
+
 const VideoQuestions: FC = () => {
     const { videoId } = useParams();
 
@@ -16,17 +21,17 @@ const VideoQuestions: FC = () => {
     let videoElement: YouTubePlayer = null;
     let intervalId: NodeJS.Timeout;
 
-    const handleAlertAccept = (videoElement: any) => {
+    const handleAlertAccept = (videoElement: YouTubeStateChangeEvent) => {
         videoElement.target.playVideo();
     };
 
-    const createAlert = (text: string, videoElement: any) => {
+    const createAlert = (text: string, videoElement: YouTubeStateChangeEvent) => {
         setQuestion(undefined);
         alert("Question: " + text);
         handleAlertAccept(videoElement);
     };
 
-    const handleOnStateChange = (event: any) => {
+    const handleOnStateChange = (event: YouTubeStateChangeEvent) => {
         if (event.data === YouTube.PlayerState.PLAYING) {
           videoElement = event;
           intervalId = setInterval(() => {
