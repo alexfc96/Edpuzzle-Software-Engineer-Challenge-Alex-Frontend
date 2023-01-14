@@ -37,11 +37,14 @@ const VideoQuestions: FC = () => {
           intervalId = setInterval(() => {
             if (event.target) {
               if(video) {
-                video.questions.forEach(question => {
-                    if (event.target.getCurrentTime() >= question.time && event.target.getCurrentTime() <= question.time + 1) {
-                        if (videoElement.target.playerInfo.playerState === 1) {
-                            videoElement.target.pauseVideo();
-                            setQuestion(question.text)
+                video.questions.forEach((question) => {
+                    if(!question.shown){
+                        if (event.target.getCurrentTime() >= question.time && event.target.getCurrentTime() <= question.time + 1) {
+                            if (videoElement.target.playerInfo.playerState === 1) {
+                                videoElement.target.pauseVideo();
+                                question.shown = true;
+                                setQuestion(question.text)
+                            }
                         }
                     }
                 })

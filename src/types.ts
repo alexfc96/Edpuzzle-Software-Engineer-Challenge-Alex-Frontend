@@ -11,4 +11,5 @@ export interface Question {
     questionId: string;
     time: number;
     text: string;
+    shown?: boolean;
 }
