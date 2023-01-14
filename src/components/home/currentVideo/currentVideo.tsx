@@ -2,9 +2,9 @@ import React from "react";
 import "./currentVideo.css";
 import { Video } from "../../../types";
 
-import YoutubeEmbed from "../../youtubeEmbed/youtubeEmbed";
 import CopyUrl from "../copyUrl/copyUrl"
 import { Link } from "react-router-dom";
+import YouTube from "react-youtube";
 
 interface Props {
   video: Video;
@@ -16,7 +16,7 @@ export const CurrentVideo: React.FC<Props> = ({video}) => {
   return (
     <div>
       <h2>{video.title}</h2>
-      <YoutubeEmbed embedId={video.videoId} />
+      <YouTube videoId={video.videoId} />
       <div className="separateElements">
         <CopyUrl url={url} />
         <Link className="goButton" to={`/video/${video._id}`}>

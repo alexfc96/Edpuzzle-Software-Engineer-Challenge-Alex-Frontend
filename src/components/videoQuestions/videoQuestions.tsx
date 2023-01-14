@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import YouTube, { YouTubePlayer } from "react-youtube";
 
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Question, Video } from "../../types";
 import QuestionComponent from "./questionComponent/questionComponent";
 
@@ -75,7 +75,9 @@ const VideoQuestions: FC = () => {
     return (
         <div>
             <nav>
-                <img src="/horizontal-logo.svg" alt="EDPuzzle logo" style={{height: "35px"}} />
+                <Link to={`/`}>
+                    <img src="/horizontal-logo.svg" alt="EDPuzzle logo" style={{height: "35px"}} />
+                </Link>
             </nav>
             {video &&
                 <div className="divideBlocks">
