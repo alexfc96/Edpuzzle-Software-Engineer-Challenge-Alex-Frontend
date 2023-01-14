@@ -4,6 +4,7 @@ export interface Video {
     questions: Question[]
     title: string;
     videoId: string;
+    totalViews: number;
 }
 
 export interface Question {

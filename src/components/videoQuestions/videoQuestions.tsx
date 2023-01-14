@@ -32,19 +32,24 @@ const VideoQuestions: FC = () => {
                 <img src="/horizontal-logo.svg" alt="EDPuzzle logo" style={{height: "35px"}} />
             </nav>
             {video &&
-                <div>
+                <div className="divideBlocks">
                     <div>
-                        <h1>{video?.title}</h1>
+                        <h2 style={{marginRight: "0 3%"}}>{video?.title}</h2>
                         {video && <YoutubeEmbed embedId={video.videoId} />}
                     </div>
-                    {video.questions && 
-                        <div>
-                            <h2>Questions in the video:</h2>
-                            {video.questions.map((question: Question) =>
-                                <QuestionComponent question={question} key={question.questionId} />
-                            )}
-                        </div>
-                    }
+                    <div className="questionsBlock">
+                        {video.questions && 
+                            <>
+                                <h2>Questions in the video:</h2>
+                                {video.questions.map((question: Question) =>
+                                    <QuestionComponent question={question} key={question.questionId} />
+                                )}
+                            </>
+                        }
+                        <h2>
+                            Viewed {video.totalViews} times
+                        </h2> 
+                    </div>
                 </div>
             }
         </div>

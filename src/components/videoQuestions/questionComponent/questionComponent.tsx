@@ -19,13 +19,12 @@ export const QuestionComponent: React.FC<Props> = ({question}) => {
     return time;
   }
   
-    
-    return (
-        <div className="marginBlock" >
-            <span>{secondsToTime(question.time)}  </span> 
-            <span>{question.text}</span>
-        </div>
-    );
-  }
+  return (
+      <div className="marginBlock" >
+          <span>{secondsToTime(question.time)}  </span> 
+          <span>{question.text}</span>
+      </div>
+  );
+}
 
 export default QuestionComponent;
