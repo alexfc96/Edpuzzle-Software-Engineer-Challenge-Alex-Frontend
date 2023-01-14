@@ -4,7 +4,7 @@ export interface Video {
     questions: Question[]
     title: string;
     videoId: string;
-    totalViews: number;
+    views: [View];
 }
 
 export interface Question {
@@ -12,4 +12,8 @@ export interface Question {
     time: number;
     text: string;
     shown?: boolean;
+}
+
+export interface View {
+    timestamp: Date;
 }

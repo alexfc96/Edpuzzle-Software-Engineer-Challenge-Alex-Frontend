@@ -101,7 +101,7 @@ const VideoQuestions: FC = () => {
                             </>
                         }
                         <h2>
-                            Viewed {video.totalViews} times
+                            Viewed {video.views.length} times
                         </h2> 
                     </div>
                 </div>
