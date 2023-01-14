@@ -19,12 +19,9 @@ export const CurrentVideo: React.FC<Props> = ({video}) => {
       <YoutubeEmbed embedId={video.videoId} />
       <div className="separateElements">
         <CopyUrl url={url} />
-        <Link className="goButton" to={`/video/${video.videoId}`}>
+        <Link className="goButton" to={`/video/${video._id}`}>
           Go
         </Link>
-        {/* <button className="goButton" onClick={handleClick}>
-          Go
-        </button> */}
       </div>
     </div>
   );
