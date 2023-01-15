@@ -12,7 +12,6 @@ interface Props {
 
 export const CurrentVideo: React.FC<Props> = ({video}) => {
   const url = `http://localhost:4200/video/${video.videoId}`;
-
   return (
     <div>
       <h2>{video.title}</h2>

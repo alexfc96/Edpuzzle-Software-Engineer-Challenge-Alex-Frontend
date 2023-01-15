@@ -1,5 +1,5 @@
-.centerButtons {
+.homeFlex {
     display: flex;
-    justify-content: center;
-    flex-direction: row-reverse;
+    margin-top: 2%;
+    margin-left: 5%;
 }
