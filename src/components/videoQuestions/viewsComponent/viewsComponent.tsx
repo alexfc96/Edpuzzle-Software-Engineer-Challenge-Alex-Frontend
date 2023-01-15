@@ -15,11 +15,12 @@ export const ViewsComponent: React.FC<Props> = ({views}) => {
   const indexOfLastItem = currentPage * viewsPerPage;
   const indexOfFirstItem = indexOfLastItem - viewsPerPage;
   const currentViews = views.slice().reverse().slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(views.length / viewsPerPage);
+  let totalPages = Math.ceil(views.length / viewsPerPage);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
-    setViewsPerPage(5);
+    setViewsPerPage(4);
+    totalPages = Math.ceil(views.length / viewsPerPage);
   }
 
   return (

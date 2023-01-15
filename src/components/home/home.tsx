@@ -11,7 +11,6 @@ import NavbarLayout from "../navbarLayout/navbarLayout";
 const Home: FC = () => {
   const [page, setPage] = useState(1);
   const [videos, setVideos] = useState<Array<Video> | undefined>(undefined);
-  console.log("🚀 ~ file: home.tsx:13 ~ videos", videos)
   const [currentVideo, setCurrentVideo] = useState<Video | undefined>(undefined);
 
   const getVideos = async () => {
