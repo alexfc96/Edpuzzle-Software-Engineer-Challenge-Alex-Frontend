@@ -6,6 +6,7 @@ import VideoBox from "./videoBox/videoBox";
 import CurrentVideo from "./currentVideo/currentVideo";
 import { Video } from "../../types";
 import "./home.css"
+import NavbarLayout from "../navbarLayout/navbarLayout";
 
 const Home: FC = () => {
   const [page, setPage] = useState(1);
@@ -32,9 +33,7 @@ const Home: FC = () => {
 
   return (
     <div>
-      <nav>
-        <img src="horizontal-logo.svg" alt="EDPuzzle logo" style={{height: "35px"}} />
-      </nav>
+      <NavbarLayout />
       <div style={{display: "flex", marginTop: "2%", marginLeft: "5%"}}>
         <div>
           {videos && videos.map((video: Video) =>

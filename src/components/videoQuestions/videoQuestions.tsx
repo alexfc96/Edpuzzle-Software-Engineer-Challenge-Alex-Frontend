@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import YouTube, { YouTubePlayer } from "react-youtube";
 
-import { Link, useParams } from 'react-router-dom';
-import { Video, View } from "../../types";
+import { useParams } from 'react-router-dom';
+import { Video } from "../../types";
 import { QuestionsComponent } from "./questionsComponent/questionsComponent";
 import { ViewsComponent } from "./viewsComponent/viewsComponent";
+import NavbarLayout from "../navbarLayout/navbarLayout";
 
 interface YouTubeStateChangeEvent {
     data: number;
@@ -75,11 +76,7 @@ const VideoQuestions: FC = () => {
 
     return (
         <div>
-            <nav>
-                <Link to={`/`}>
-                    <img src="/horizontal-logo.svg" alt="EDPuzzle logo" style={{height: "35px"}} />
-                </Link>
-            </nav>
+            <NavbarLayout />
             {video &&
                 <div className="divideBlocks">
                     <div>
