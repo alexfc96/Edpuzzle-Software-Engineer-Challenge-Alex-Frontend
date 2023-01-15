@@ -33,24 +33,25 @@ const AllVideos: FC = () => {
     <>
     <div>
         {videos && videos.map((video: Video) =>
-            <VideoBox key={video._id} video={video} selectCurrentVideo={selectCurrentVideo} />)
+          <VideoBox key={video._id} video={video} selectCurrentVideo={selectCurrentVideo} />)
         }
         <div className="centerButtons">
-        {videos && page < 3 &&
+          {videos && page < 3 &&
             <button onClick={() => setPage(page + 1)}>
-            Next videos
+              Next videos
             </button>
-        }
-        {videos && page > 1 &&
-        <button onClick={() => setPage(page - 1)} style={{marginRight: "20px"}}>
-            Previous page
-        </button>}
+          }
+          {videos && page > 1 &&
+            <button onClick={() => setPage(page - 1)} style={{marginRight: "20px"}}>
+              Previous page
+            </button>
+          }
         </div>
     </div>
-    <div style={{margin: "0 5%"}}>
-          {currentVideo && 
-            <CurrentVideo video={currentVideo} />
-        }
+    <div className="marginVideo">
+      {currentVideo && 
+        <CurrentVideo video={currentVideo} />
+      }
     </div>
     </>
   );
