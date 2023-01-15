@@ -1,5 +1,5 @@
 import React from "react";
-import "./currentVideo.css";
+import "./selectedVideo.css";
 import { Video } from "../../../types";
 
 import CopyUrl from "../copyUrl/copyUrl"
@@ -10,7 +10,7 @@ interface Props {
   video: Video;
 }
 
-export const CurrentVideo: React.FC<Props> = ({video}) => {
+export const SelectedVideo: React.FC<Props> = ({video}) => {
   const url = `http://localhost:4200/video/${video.videoId}`;
   return (
     <div>
@@ -26,4 +26,4 @@ export const CurrentVideo: React.FC<Props> = ({video}) => {
   );
   }
 
-export default CurrentVideo;
+export default SelectedVideo;

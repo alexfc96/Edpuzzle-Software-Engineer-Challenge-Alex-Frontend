@@ -3,17 +3,17 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 
 import VideoBox from "../videoBox/videoBox";
-import CurrentVideo from "../currentVideo/currentVideo";
+import SelectedVideo from "../selectedVideo/selectedVideo";
 import { Video } from "../../../types";
 import "./allVideos.css"
 
 const AllVideos: FC = () => {
   const [page, setPage] = useState(1);
   const [videos, setVideos] = useState<Array<Video> | undefined>(undefined);
-  const [currentVideo, setCurrentVideo] = useState<Video | undefined>(undefined);
+  const [selectedVideo, setSelectedVideo] = useState<Video | undefined>(undefined);
 
-  const selectCurrentVideo = (video: Video) => {
-    setCurrentVideo(video);
+  const selectVideo = (video: Video) => {
+    setSelectedVideo(video);
   }
 
   const getVideos = async () => {
@@ -33,7 +33,7 @@ const AllVideos: FC = () => {
     <>
     <div>
         {videos && videos.map((video: Video) =>
-          <VideoBox key={video._id} video={video} selectCurrentVideo={selectCurrentVideo} />)
+          <VideoBox key={video._id} video={video} selectVideo={selectVideo} />)
         }
         <div className="centerButtons">
           {videos && page < 3 &&
@@ -49,8 +49,8 @@ const AllVideos: FC = () => {
         </div>
     </div>
     <div className="marginVideo">
-      {currentVideo && 
-        <CurrentVideo video={currentVideo} />
+      {selectedVideo && 
+        <SelectedVideo video={selectedVideo} />
       }
     </div>
     </>
