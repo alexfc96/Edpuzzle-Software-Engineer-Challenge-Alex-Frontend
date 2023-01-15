@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from 'moment';
 
 import { View } from "../../../types";
@@ -8,16 +8,34 @@ interface Props {
 }
 
 export const ViewsComponent: React.FC<Props> = ({views}) => {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [viewsPerPage, setViewsPerPage] = useState(2);
+
+  const indexOfLastItem = currentPage * viewsPerPage;
+  const indexOfFirstItem = indexOfLastItem - viewsPerPage;
+  const currentViews = views.slice().reverse().slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(views.length / viewsPerPage);
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+    setViewsPerPage(5);
+  }
+
   return (
     <>
         <h2>Viewed {views.length } times</h2> 
         <div>
-            {views.map((view: View) => {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
+            {currentViews.map((view: View) => {
                 return <p key={view._id}>Viewed {moment(view.timestamp).fromNow()} ago at {moment(view.timestamp).format('HH:mm')}</p>
             })}
         </div>
+        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+            Previous
+        </button>
+        <button onClick={() => nextPage()} disabled={currentPage === totalPages}> 
+            Next
+        </button>
     </>
   );
 }
