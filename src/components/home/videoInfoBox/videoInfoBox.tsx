@@ -1,12 +1,12 @@
 import React from "react";
 import { Video } from "../../../types";
-import "./videoBox.css"
+import "./videoInfoBox.css"
 interface Props {
   video: Video;
   selectVideo: (video: Video) => void;
 }
 
-export const VideoBox: React.FC<Props> = ({video, selectVideo}) => {
+export const VideoInfoBox: React.FC<Props> = ({video, selectVideo}) => {
 
   const selectCurrentVideo = () => {
     selectVideo(video)
@@ -22,4 +22,4 @@ export const VideoBox: React.FC<Props> = ({video, selectVideo}) => {
   );
 }
 
-export default VideoBox;
+export default VideoInfoBox;

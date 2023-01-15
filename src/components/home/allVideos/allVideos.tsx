@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
-import VideoBox from "../videoBox/videoBox";
+import VideoInfoBox from "../videoInfoBox/videoInfoBox";
 import SelectedVideo from "../selectedVideo/selectedVideo";
 import { Video } from "../../../types";
 import "./allVideos.css"
@@ -33,7 +33,7 @@ const AllVideos: FC = () => {
     <>
     <div>
         {videos && videos.map((video: Video) =>
-          <VideoBox key={video._id} video={video} selectVideo={selectVideo} />)
+          <VideoInfoBox key={video._id} video={video} selectVideo={selectVideo} />)
         }
         <div className="centerButtons">
           {videos && page < 3 &&
