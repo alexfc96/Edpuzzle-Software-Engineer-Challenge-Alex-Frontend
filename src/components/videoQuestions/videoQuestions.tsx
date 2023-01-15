@@ -41,6 +41,7 @@ const VideoQuestions: FC = () => {
               if(video) {
                 video.questions.forEach((question) => {
                     if(!question.shown){
+                        if(question.time === 0) question.time = 1;
                         if (event.target.getCurrentTime() >= question.time && event.target.getCurrentTime() <= question.time + 1) {
                             if (videoElement.target.playerInfo.playerState === 1) {
                                 videoElement.target.pauseVideo();
