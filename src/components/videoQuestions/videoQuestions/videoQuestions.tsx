@@ -1,23 +1,21 @@
 import React, { FC } from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import YouTube, { YouTubePlayer } from "react-youtube";
 
-import { useParams } from "react-router-dom";
-import { Video } from "../../types";
-import { QuestionsComponent } from "./questionsComponent/questionsComponent";
-import { ViewsComponent } from "./viewsComponent/viewsComponent";
-import NavbarLayout from "../navbarLayout/navbarLayout";
+import { Video } from "../../../types";
+import { QuestionsComponent } from "../questionsComponent/questionsComponent";
+import { ViewsComponent } from "../viewsComponent/viewsComponent";
 
 interface YouTubeStateChangeEvent {
   data: number;
   target: YouTubePlayer;
 }
 
-const VideoQuestions: FC = () => {
-  const { videoId } = useParams();
+interface Props {
+  video: Video;
+}
 
-  const [video, setVideo] = useState<Video | undefined>(undefined);
+const VideoQuestions: FC<Props> = ({ video }) => {
   const [question, setQuestion] = useState<string | undefined>(undefined);
 
   let videoElement: YouTubePlayer = null;
@@ -58,43 +56,23 @@ const VideoQuestions: FC = () => {
     }
   };
 
-  const getVideo = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/api/videos/${videoId}`
-      );
-      setVideo(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getVideo();
-  }, []);
-
   return (
-    <div>
-      <NavbarLayout />
-      {video && (
-        <div className="divideBlocks">
-          <div>
-            <h2 style={{ marginRight: "0 3%" }}>{video?.title}</h2>
-            {video && (
-              <YouTube
-                videoId={video.videoId}
-                onStateChange={handleOnStateChange}
-              />
-            )}
-          </div>
-          <div className="questionsBlock">
-            {video.questions && (
-              <QuestionsComponent questions={video.questions} />
-            )}
-            <ViewsComponent views={video.views} />
-          </div>
+    <div className="divideBlocks">
+      <>
+        <div>
+          <h2 style={{ marginRight: "0 3%" }}>{video?.title}</h2>
+          <YouTube
+            videoId={video.videoId}
+            onStateChange={handleOnStateChange}
+          />
         </div>
-      )}
+        <div className="questionsBlock">
+          {video.questions && (
+            <QuestionsComponent questions={video.questions} />
+          )}
+          <ViewsComponent views={video.views} />
+        </div>
+      </>
     </div>
   );
 };
