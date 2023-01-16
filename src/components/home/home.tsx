@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 
 import AllVideos from "./allVideos/allVideos";
 import "./home.css";
-import NavbarLayout from "../navbarLayout/navbarLayout";
+import HeaderLayout from "../headerLayout/headerLayout";
 import { Video } from "../../types";
 import axios from "axios";
 
@@ -27,7 +27,7 @@ const Home: FC = () => {
 
   return (
     <div>
-      <NavbarLayout />
+      <HeaderLayout />
       <div className="homeFlex">
         {videos && <AllVideos videos={videos} page={page} setPage={setPage} />}
         {!videos && <h2>No videos at this moment. Try again later.</h2>}

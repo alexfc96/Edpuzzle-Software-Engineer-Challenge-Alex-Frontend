@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const NavbarLayout: React.FC = () => {
+export const HeaderLayout: React.FC = () => {
   return (
-    <nav>
+    <header>
       <Link to={`/`}>
         <img
           src="/horizontal-logo.svg"
@@ -11,8 +11,8 @@ export const NavbarLayout: React.FC = () => {
           style={{ height: "35px" }}
         />
       </Link>
-    </nav>
+    </header>
   );
 };
 
-export default NavbarLayout;
+export default HeaderLayout;
