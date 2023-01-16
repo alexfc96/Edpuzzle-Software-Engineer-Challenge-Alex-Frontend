@@ -31,7 +31,6 @@ const Home: FC = () => {
       <HeaderLayout />
       <div className="homeFlex">
         {videos && <AllVideos videos={videos} page={page} setPage={setPage} />}
-        {!videos && <h2>No videos at this moment. Try again later.</h2>}
       </div>
     </div>
   );

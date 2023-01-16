@@ -31,7 +31,6 @@ const VideoQuestionsIndex: FC = () => {
     <div>
       <HeaderLayout />
       {video && <VideoQuestions video={video} />}
-      {!video && <h2>Video not found.</h2>}
     </div>
   );
 };
