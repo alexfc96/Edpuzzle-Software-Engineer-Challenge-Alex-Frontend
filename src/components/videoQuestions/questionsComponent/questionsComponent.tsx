@@ -1,7 +1,8 @@
 import React from "react";
 
+import QuestionComponent from "../question/question"
+;
 import { Question } from "../../../types";
-import QuestionComponent from "../question/question";
 
 interface Props {
   questions: Question[];

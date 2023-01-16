@@ -1,10 +1,11 @@
 import React from "react";
-import "./selectedVideo.css";
-import { Video } from "../../../types";
-
-import CopyUrl from "../copyUrl/copyUrl"
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
+
+import CopyUrl from "../copyUrl/copyUrl"
+
+import { Video } from "../../../types";
+import "./selectedVideo.css";
 
 interface Props {
   video: Video;

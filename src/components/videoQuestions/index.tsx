@@ -1,11 +1,11 @@
-import React, { FC } from "react";
-import { useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import axios from "axios";
-
 import { useParams } from "react-router-dom";
-import { Video } from "../../types";
+
 import VideoQuestions from "./videoQuestions/videoQuestions";
 import HeaderLayout from "../headerLayout/headerLayout";
+
+import { Video } from "../../types";
 
 const VideoQuestionsIndex: FC = () => {
   const { videoId } = useParams();

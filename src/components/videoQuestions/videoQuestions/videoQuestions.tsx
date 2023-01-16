@@ -2,9 +2,10 @@ import React, { FC } from "react";
 import { useState } from "react";
 import YouTube, { YouTubePlayer } from "react-youtube";
 
-import { Video } from "../../../types";
 import { QuestionsComponent } from "../questionsComponent/questionsComponent";
 import { ViewsComponent } from "../viewsComponent/viewsComponent";
+
+import { Video } from "../../../types";
 
 interface YouTubeStateChangeEvent {
   data: number;
@@ -16,9 +17,9 @@ interface Props {
 }
 
 const VideoQuestions: FC<Props> = ({ video }) => {
-  const [question, setQuestion] = useState<string | undefined>(undefined);
-
   let videoElement: YouTubePlayer = null;
+
+  const [question, setQuestion] = useState<string | undefined>(undefined);
 
   const handleAlertAccept = (videoElement: YouTubeStateChangeEvent) => {
     videoElement.target.playVideo();

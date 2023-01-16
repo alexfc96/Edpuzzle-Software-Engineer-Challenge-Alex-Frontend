@@ -1,6 +1,7 @@
 import React from "react";
-import "./question.css";
+
 import { Question } from "../../../types";
+import "./question.css";
 
 interface Props {
   question: Question;

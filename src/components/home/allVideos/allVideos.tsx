@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import VideoInfoBox from "../videoInfoBox/videoInfoBox";
 import SelectedVideo from "../selectedVideo/selectedVideo";
+
 import { Video } from "../../../types";
 import "./allVideos.css";
 

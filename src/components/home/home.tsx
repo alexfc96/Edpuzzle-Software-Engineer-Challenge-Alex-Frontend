@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
+import axios from "axios";
 
 import AllVideos from "./allVideos/allVideos";
-import "./home.css";
 import HeaderLayout from "../headerLayout/headerLayout";
+
 import { Video } from "../../types";
-import axios from "axios";
+import "./home.css";
 
 const Home: FC = () => {
   const [videos, setVideos] = useState<Array<Video> | undefined>(undefined);
