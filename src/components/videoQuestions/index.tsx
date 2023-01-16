@@ -30,9 +30,7 @@ const VideoQuestionsIndex: FC = () => {
   return (
     <div>
       <NavbarLayout />
-      {video && (
-        <VideoQuestions video={video} />
-      )}
+      {video && <VideoQuestions video={video} />}
       {!video && <h2>Video not found.</h2>}
     </div>
   );

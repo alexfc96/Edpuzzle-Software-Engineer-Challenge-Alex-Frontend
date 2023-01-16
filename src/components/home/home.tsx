@@ -1,7 +1,7 @@
-import React, {FC, useEffect, useState} from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import AllVideos from "./allVideos/allVideos";
-import "./home.css"
+import "./home.css";
 import NavbarLayout from "../navbarLayout/navbarLayout";
 import { Video } from "../../types";
 import axios from "axios";
@@ -12,15 +12,17 @@ const Home: FC = () => {
 
   const getVideos = async () => {
     try {
-        const response = await axios.get(`http://localhost:3000/api/videos/all?page=${page}`);
-        setVideos(response.data)
+      const response = await axios.get(
+        `http://localhost:3000/api/videos/all?page=${page}`
+      );
+      setVideos(response.data);
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-  }
+  };
 
   useEffect(() => {
-    getVideos()
+    getVideos();
   }, [page]);
 
   return (

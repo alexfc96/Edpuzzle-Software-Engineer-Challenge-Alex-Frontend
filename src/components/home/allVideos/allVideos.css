@@ -1,9 +1,9 @@
 .centerButtons {
-    display: flex;
-    justify-content: center;
-    flex-direction: row-reverse;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
 }
 
 .marginVideo {
-    margin: 0 5%;
+  margin: 0 5%;
 }

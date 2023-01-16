@@ -7,10 +7,10 @@ import VideoQuestionsIndex from "./components/videoQuestions/index";
 const App: FC = () => {
   return (
     <Routes>
-      <Route path='/' element={<Home/>} />
-      <Route path='/video/:videoId' element={<VideoQuestionsIndex/>} />
+      <Route path="/" element={<Home />} />
+      <Route path="/video/:videoId" element={<VideoQuestionsIndex />} />
     </Routes>
-  )
-}
+  );
+};
 
 export default App;
