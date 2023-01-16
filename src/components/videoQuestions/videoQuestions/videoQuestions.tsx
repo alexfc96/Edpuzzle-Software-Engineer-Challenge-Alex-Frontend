@@ -5,7 +5,7 @@ import YouTube, { YouTubePlayer } from "react-youtube";
 import { QuestionsComponent } from "../questionsComponent/questionsComponent";
 import { ViewsComponent } from "../viewsComponent/viewsComponent";
 
-import { Video } from "../../../types";
+import { Video } from "../../../../types";
 
 interface YouTubeStateChangeEvent {
   data: number;

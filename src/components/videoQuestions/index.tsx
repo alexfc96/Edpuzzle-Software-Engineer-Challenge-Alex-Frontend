@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import VideoQuestions from "./videoQuestions/videoQuestions";
 import HeaderLayout from "../headerLayout/headerLayout";
 
-import { Video } from "../../types";
+import { Video } from "../../../types";
 
 const VideoQuestionsIndex: FC = () => {
   const { videoId } = useParams();

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 
-import { View } from "../../../types";
+import { View } from "../../../../types";
 
 interface Props {
   views: View[];
