@@ -1,46 +1,44 @@
-# Getting Started with Create React App
-A
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Code Challenge
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Your challenge will be to build an app that can display a list of videos that contain embedded questions in them. The app must also be capable of playing any of these videos and pausing them once it's time to display a question. If you enjoy building this mini application, you'll definitely love working with us on the full Edpuzzle product!
 
-### `npm start`
+## Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You've been given this Github repository where you'll have to submit your work. We won't be checking commits as you're still working on the challenge so don't worry about pushing incomplete code to Github. You will be presenting the results of the code challenge to 2 Edpuzzle team members so we recommend that you write down your decisions so you can remember to talk about them with us.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Instructions: Frontend
 
-### `npm test`
+You'll build a frontend single page application with React. It will have 2 screens in 2 different routes/urls:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Videos Screen** - A screen where the list of videos is shown. A video from the list can be clicked and a YouTube embedded player will appear without navigating to another screen. Below that video there will be a shareable link and button that allow navigation to a separate screen where the video player can be shown as a standalone element (see (2)). The following is an example of a wireframe that would accomplish this goal but you can modify it as you see fit.
 
-### `npm run build`
+![Videos Screen](images/videos-list.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Video Player Screen** - A screen where the player is displayed withsome extra information around it and in a different url/route than the Videos Screen.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Video Screen](images/video-player.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For the video player, you have to implement some code to open a browser native alert when the video reaches a time where it contains a question. In the alert, show the text of the question if the browser allows it.
 
-### `npm run eject`
+## Technology Requirements
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+As a developer with testing experience, we would like to see those skills applied to the challenge. We don't expect you to test everything as the time for this challenge is short. You can test just enough to show us how you would get started testing in a real life project.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Frontend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **Required** - React.js
+- **Required** - Routing library of your choice like React Router
+- **Required** - Please don't use a UI components library with pre-defined styles. Create your own components with your own style.
+- **Required** - State management library like Redux
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Feel free to use any other technologies that you need for the code as well as the tests.
 
-## Learn More
+### Database
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+We will provide the database connection information to you.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### YouTube Data API
+
+In order to get data from the YouTube API from within the Node.js backend, you'll need to configure a "Service Account" first. You can find the documentation [here](https://developers.google.com/identity/toolkit/web/quickstart/nodejs#step_1_configure_the_google_identity_toolkit_api).
