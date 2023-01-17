@@ -4,7 +4,7 @@ export interface Video {
   questions: Question[];
   title: string;
   videoId: string;
-  views: [View];
+  views: View[];
 }
 
 export interface Question {
@@ -16,5 +16,5 @@ export interface Question {
 
 export interface View {
   _id: string;
-  timestamp: Date;
+  timestamp: string;
 }
