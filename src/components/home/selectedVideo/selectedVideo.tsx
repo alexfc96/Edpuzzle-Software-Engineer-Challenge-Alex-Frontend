@@ -4,7 +4,7 @@ import YouTube from "react-youtube";
 
 import CopyUrl from "../copyUrl/copyUrl"
 
-import { Video } from "../../../../types";
+import { Video } from "types";
 import "./selectedVideo.css";
 
 interface Props {

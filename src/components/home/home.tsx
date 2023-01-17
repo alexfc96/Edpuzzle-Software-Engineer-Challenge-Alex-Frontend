@@ -4,7 +4,7 @@ import axios from "axios";
 import AllVideos from "./allVideos/allVideos";
 import HeaderLayout from "../headerLayout/headerLayout";
 
-import { Video } from "../../../types";
+import { Video } from "types";
 import "./home.css";
 
 const Home: FC = () => {

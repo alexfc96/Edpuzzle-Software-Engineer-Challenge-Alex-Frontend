@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Video } from "../../../../types";
+import { Video } from "types";
 import "./videoInfoBox.css"
 interface Props {
   video: Video;
