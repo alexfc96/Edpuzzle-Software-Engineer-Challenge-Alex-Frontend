@@ -33,13 +33,13 @@ const AllVideos: FC<Props> = ({ videos, setPage, page }) => {
           />
         ))}
         <div className="centerButtons">
-          {page < 3 && (
+          {page < 3 && ( //TODO: Dinamic
             <button onClick={() => setPage(page + 1)}>Next videos</button>
           )}
           {page > 1 && (
             <button
               onClick={() => setPage(page - 1)}
-              style={{ marginRight: "20px" }}
+              className="marginRightVideo"
             >
               Previous page
             </button>
